@@ -12,7 +12,9 @@ public class Player : MonoBehaviour
     public Text keyAmount; // A kulcsok számát megjelenítő szövegobjektum
     public Text youWin; // A játékos győzelmét jelző szövegobjektum
     public GameObject door; // A befejezést blokkoló objektum
-
+    public KeyCode restartKey = KeyCode.Space; // A játék újraindítását jelző billentyű
+    public KeyCode quitKey = KeyCode.Escape; // A játék kilépésését jelző billentyű
+    
     // A játék kezdete előtti inicializálás
     void Start()
     {
@@ -43,7 +45,17 @@ public class Player : MonoBehaviour
              {
                  Destroy(door); // A befejezést blokkoló objektum eltávolítása
              }
+    {
+            if (Input.GetKeyDown(restartKey)) // Ha a Space gomb megnyomása történt
+            {
+                Application.LoadLevel("SampleScene"); // Újra betöltődik a "Samplescene" (pálya)
+            }
+            if (Input.GetKeyDown(quitKey)) // Ha az Escape gomb megnyomása történt
+            {
+                Application.Quit(); // A játék bezáródik
+            }
     }
+ }
 // A 2D-s ütközések kezelésére szolgáló metódus
 private void OnCollisionEnter2D(Collision2D collision)
     {
