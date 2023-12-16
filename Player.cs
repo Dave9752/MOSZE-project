@@ -6,7 +6,11 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public int keys = 0;  // A játékos által begyűjtött kulcsok száma
     public float speed = 5.0f; // A játékos mozgási sebessége
+
+    public Text keyAmount; // A kulcsok számát megjelenítő szövegobjektum
+    public Text youWin; // A játékos győzelmét jelző szövegobjektum
 
     // A játék kezdete előtti inicializálás
     void Start()
@@ -36,5 +40,18 @@ public class Player : MonoBehaviour
         }
         
     }
-
+// A 2D-s ütközések kezelésére szolgáló metódus
+private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Keys") // Ha a kulcsokkal való ütközés történt
+        {
+            keys++; // Kulcs számának növelése
+            keyAmount.text = "Keys: " + keys; // A kulcs számának frissítése
+            Destroy(collision.gameObject); // A kulcs objektum eltávolítása
+        }
+    }
+    if (collision.gameObject.tag == "Exit") // Ha a cél objektummal való ütközés történt
+        {
+            youWin.text = "Gratulálok, nyertél! :)"; // Győztes üzenet megjelenítése
+        }
 }
