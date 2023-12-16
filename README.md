@@ -1,6 +1,6 @@
 Fordítási és futtatási instrukció!
 
-A felhasználó elindítja a játék alkalmazást. Ezután a játék elindul. A felhasználó a játékban találja magát ahol egy karaktert irányíthat.Nyíl billentyűkkel tud fel, le, 
+A felhasználó elindítja a játék alkalmazást. Ezután a játék elindul. A felhasználó a játékban találja magát ahol egy karaktert irányíthat. Nyíl billentyűkkel tud fel, le, 
 jobbra és balra mozogni. A falaknak neki mehet, de át nem tud menni rajtuk. A pályán fellelhetőek kulcsok amikre a karakter rámegy akkor a kulcs eltűnik és a számláló fent 
 'keys' kezdeti  0 számlálója növekszik mindig egyel. A pályán van öt darab folyamatosan mozgó enemy (zöld szörcsenyke, green slime) található amikre a felhasználó karaktere 
 hozzáér akkor a pálya újra elindul, a 'keys' számláló lenullázódik és kezdheti a felhasználó elölről a játékot vagy bezárhatja az alkalmazást. Újraindítás 'space' 
