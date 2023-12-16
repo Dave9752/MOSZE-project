@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     public Text keyAmount; // A kulcsok számát megjelenítő szövegobjektum
     public Text youWin; // A játékos győzelmét jelző szövegobjektum
+    public GameObject door; // A befejezést blokkoló objektum
 
     // A játék kezdete előtti inicializálás
     void Start()
@@ -38,7 +39,10 @@ public class Player : MonoBehaviour
         {
             transform.Translate(0, -speed * Time.deltaTime, 0);
         }
-        
+        if (keys==7) // Ha a játékos összes (7) kulcsot megszerezte
+             {
+                 Destroy(door); // A befejezést blokkoló objektum eltávolítása
+             }
     }
 // A 2D-s ütközések kezelésére szolgáló metódus
 private void OnCollisionEnter2D(Collision2D collision)
@@ -49,9 +53,13 @@ private void OnCollisionEnter2D(Collision2D collision)
             keyAmount.text = "Keys: " + keys; // A kulcs számának frissítése
             Destroy(collision.gameObject); // A kulcs objektum eltávolítása
         }
-    }
-    if (collision.gameObject.tag == "Exit") // Ha a cél objektummal való ütközés történt
+        if (collision.gameObject.tag == "Exit") // Ha a cél objektummal való ütközés történt
         {
             youWin.text = "Gratulálok, nyertél! :)"; // Győztes üzenet megjelenítése
         }
+        if (collision.gameObject.tag == "Enemies") // Ha az ellenséges objektummal való ütközés történt
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // A pálya újratöltése
+        }  
+    }
 }
